@@ -1,0 +1,15 @@
+Minor changes had to be made
+
+librtmp/hashswf.c
+
+Changed lines 499, 500 to
+
+path = malloc(hpre.av_len + home.av_len + sizeof(DIRSEP "Documents/.swfinfo"));
+sprintf(path, "%s%s" DIRSEP "Documents/.swfinfo", hpre.av_val, home.av_val);
+
+This allows it to work within an iPhone Apps documents directory. I tried setting the Environment variables, but without success.
+
+Use the buildfat.sh script to build a binary library which will work in the simulator and iPhone
+To build with OpenSSL (needed for rtmpe) use the OpenSSL from my GitHub and change the buildfat.sh to link to the correct location.
+
+The Download Manager project shows how to use the library.
